@@ -106,4 +106,12 @@ const recipes = [
     recipeDetail.classList.add('hidden');
     menuList.style.display = 'grid';
   }
+  searchInput.addEventListener('input', () => {
+    const keyword = searchInput.value.toLowerCase();
+    const filtered = recipes.filter(recipe =>
+      recipe.name.toLowerCase().includes(keyword)
+    );
+    displayMenus(filtered);
+  });
+  displayMenus(recipes);
   
