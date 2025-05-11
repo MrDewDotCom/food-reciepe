@@ -54,7 +54,7 @@ const recipes = [
         ]
       }
   ];
-  
+  const searchInput = document.getElementById('search-input');
   const menuList = document.getElementById('menu-list');
   const recipeDetail = document.getElementById('recipe-detail');
   const recipeTitle = document.getElementById('recipe-title');
@@ -63,6 +63,16 @@ const recipes = [
   const toolsList = document.getElementById('tools');
 
   
+  function displayMenus(filteredRecipes) {
+    menuList.innerHTML = '';
+    filteredRecipes.forEach((recipe, index) => {
+      const card = document.createElement('div');
+      card.className = 'menu-card';
+      card.textContent = recipe.name;
+      card.onclick = () => showRecipe(recipes.indexOf(recipe)); // ใช้ index จาก original list
+      menuList.appendChild(card);
+    });
+  }
   
   recipes.forEach((recipe, index) => {
     const card = document.createElement('div');
